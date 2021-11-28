@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Papa's Pizzeria";
+}
+
+<html lang="es">
+    <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>@ViewData["Title"]</title>
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="~/css/site.css" />
+    </head>
+
+    <body>
+            <div style="display: flex; justify-content:center; align-items:center;margin-top:10%">
+                <div class="card" style="width: 352px;">
+                        <div class="card-img-top">
+                            <img src="@ViewBag.PizzaElegida.UrlFoto" style="width:350px;">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">@ViewBag.PizzaElegida.Nombre</h3>
+                            <h4>$@ViewBag.PizzaElegida.Precio</h4>
+                            <h5>Tamaño: @ViewBag.PizzaElegida.Tamano</h5>
+                            @foreach(Ingrediente ing in ViewBag.PizzaElegida.ListarIngredientes()){
+                                <h6>@ing.Nombre</h6>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </body>
+</html>

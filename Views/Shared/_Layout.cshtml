@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+    <html lang="es">
+        <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>@ViewData["Title"]</title>
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="~/css/site.css" />
+        </head>
+
+        <body style="background-color: #730017;">
+            <header>
+                <div class="container-fluid">
+                    <div class="row">
+                        <nav style="background-color: #285903;width:100%"  class="navbar navbar-dark">
+                            
+                            <div class="col-md-2">
+                                <a href='@Url.Action("Index","Home")'>
+                                    <img style="width: 8rem;" src=/media/logo.png>
+                                </a>
+                            </div>
+
+                            <div class="col-md-9"></div>
+                            
+                            <div class="col-md-1">
+                                <a href='@Url.Action("AgregarPizzas","Home")' class="btn btn-danger my-2 my-sm-10" style="border-width: 5px;">
+                                <h6 style="color: white;">AÑADIR<br>PIZZA</h6>
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+
+            <footer style="background-color: #285903;" class="border-top footer text-muted">
+                <div class="container">
+                    <p style="color: white; width: 20px;">Papa's pizzeria 2021 - Derechos reservados a Tomas Blaser y Alan Garber</p>
+                </div>
+            </footer>
+
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+            @await RenderSectionAsync("Scripts", required: false)
+        </body>
+    </html>

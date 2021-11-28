@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Papa's Pizzeria";
+}
+
+<html>
+    <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>@ViewData["Title"]</title>
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="~/css/site.css" />
+        </head>
+
+        <body>
+            <div class="container-fluid">
+                <div class="row">
+                    @if(ViewBag.ListaPizzas.Count>0){
+                        @foreach (Pizza pizza in ViewBag.ListaPizzas)
+                        {
+                            <div class="card-deck" style="margin-top: 3rem; margin-bottom:3rem; margin-left: 2rem">
+                                <div class="card">
+                                    <img src="@pizza.UrlFoto" class="card-img-top" width="20px">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="text-align: center;">@pizza.Nombre</h5>
+                                        <h6 class="card-title" style="text-align: center;">$@pizza.Precio</h6>
+                                        <div style="text-align: center;">
+                                            <a class="btn btn-warning" href='@Url.Action("VerPizza","Home", new{IdPizza=@pizza.IdPizza})'>
+                                                Ver Pizza
+                                            </a>
+                                            <br><br>
+                                            <a class="btn btn-danger" href='@Url.Action("EliminarPizza","Home", new{IdPizza=@pizza.IdPizza})'>
+                                                Eliminar Pizza
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }else{
+                            <div style="position: absolute; top: 45%; left: 40%;">
+                                <h3 style="color:white;">Por favor, añada una pizza</h3>
+                            </div>
+                    }
+                </div>
+            </div>        
+        </body>
+</html>
+
+<style>
+    .card-img-top{
+        width: 300px;
+        height: 150px;
+    }
+</style>
